@@ -13,13 +13,13 @@ interface ProjectCardProps {
   project: Project;
 }
 
-const statusVariants = {
-  planning: 'secondary',
-  in_development: 'default',
-  review: 'warning',
-  completed: 'outline',
-  archived: 'outline',
-  on_hold: 'outline',
+const statusBadgeClasses = {
+  planning: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+  in_development: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
+  review: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
+  completed: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+  archived: 'bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-400',
+  on_hold: 'bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-400',
 } as const;
 
 const typeColors = {
@@ -36,16 +36,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Card
-      className="hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1 animate-fade-in"
+      className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-200 cursor-pointer group hover:-translate-y-1 animate-fade-in shadow-lg"
       onClick={() => router.push(`/projects/${project.id}`)}
     >
       <CardHeader>
         <div className="space-y-2">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-bold text-lg line-clamp-2 group-hover:text-primary transition-colors">
+            <h3 className="font-bold text-lg line-clamp-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
               {project.title}
             </h3>
-            <Badge variant={statusVariants[project.status]}>
+            <Badge className={statusBadgeClasses[project.status]}>
               {project.status === 'in_development' ? 'In Dev' : project.status}
             </Badge>
           </div>
@@ -80,12 +80,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Progress */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">Progress</span>
-            <span className="font-medium">{project.progress}%</span>
+            <span className="text-gray-600 dark:text-gray-400">Progress</span>
+            <span className="font-semibold text-gray-900 dark:text-white">{project.progress}%</span>
           </div>
-          <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+          <div className="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
             <div
-              className="h-full bg-primary transition-all"
+              className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all rounded-full"
               style={{ width: `${project.progress}%` }}
             />
           </div>

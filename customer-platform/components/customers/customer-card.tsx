@@ -11,10 +11,10 @@ interface CustomerCardProps {
   onClick: () => void;
 }
 
-const statusVariants = {
-  active: 'default',
-  on_hold: 'secondary',
-  completed: 'outline',
+const statusBadgeClasses = {
+  active: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+  on_hold: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
+  completed: 'bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-400',
 } as const;
 
 const statusLabels = {
@@ -27,11 +27,11 @@ export function CustomerCard({ customer, onClick }: CustomerCardProps) {
   const projectCount = getCustomerProjectCount(customer.id);
 
   return (
-    <Card className="hover:shadow-lg transition-all duration-200 cursor-pointer hover:-translate-y-1 animate-fade-in" onClick={onClick}>
+    <Card className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-200 cursor-pointer hover:-translate-y-1 animate-fade-in shadow-lg" onClick={onClick}>
       <CardHeader>
         <div className="flex items-start justify-between">
-          <h3 className="font-bold text-lg line-clamp-1">{customer.name}</h3>
-          <Badge variant={statusVariants[customer.status]}>
+          <h3 className="font-bold text-lg line-clamp-1 text-gray-900 dark:text-white">{customer.name}</h3>
+          <Badge className={statusBadgeClasses[customer.status]}>
             {statusLabels[customer.status]}
           </Badge>
         </div>

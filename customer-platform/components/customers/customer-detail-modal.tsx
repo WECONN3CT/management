@@ -79,7 +79,7 @@ export function CustomerDetailModal({ customer, isOpen, onClose }: CustomerDetai
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-2xl">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             <span>Customer Details</span>
@@ -263,7 +263,7 @@ export function CustomerDetailModal({ customer, isOpen, onClose }: CustomerDetai
             ) : (
               <div className="space-y-3">
                 {projects.map((project) => (
-                  <Card key={project.id} className="overflow-hidden">
+                  <Card key={project.id} className="overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-shadow">
                     <CardContent className="p-4">
                       <div className="space-y-3">
                         <div className="flex items-start justify-between">
