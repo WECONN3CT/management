@@ -41,6 +41,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
     review: 'warning',
     completed: 'outline',
     archived: 'outline',
+    on_hold: 'outline',
   } as const;
 
   const typeColors = {
