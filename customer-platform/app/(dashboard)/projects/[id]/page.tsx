@@ -1,5 +1,6 @@
 'use client';
 
+import { use } from 'react';
 import { useRouter } from 'next/navigation';
 import { MOCK_DATA, getCustomerById, getStoriesByProjectId } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
@@ -9,9 +10,10 @@ import { ArrowLeft, Edit, ExternalLink, Calendar, User, Layers, Plus } from 'luc
 import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
 
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
-  const project = MOCK_DATA.projects.find(p => p.id === params.id);
+  const { id } = use(params);
+  const project = MOCK_DATA.projects.find(p => p.id === id);
 
   if (!project) {
     return (
@@ -80,7 +82,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
             <Edit className="mr-2 h-4 w-4" />
             Edit
           </Button>
-          <Button onClick={() => router.push(`/projects/${project.id}/kanban`)}>
+          <Button onClick={() => router.push(`/projects/${id}/kanban`)}>
             Go to Kanban →
           </Button>
         </div>
@@ -170,7 +172,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => router.push(`/projects/${project.id}/kanban`)}
+                  onClick={() => router.push(`/projects/${id}/kanban`)}
                 >
                   View Kanban
                 </Button>
@@ -286,7 +288,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
                 variant="outline"
                 size="sm"
                 className="w-full justify-start"
-                onClick={() => router.push(`/projects/${project.id}/kanban`)}
+                onClick={() => router.push(`/projects/${id}/kanban`)}
               >
                 <Layers className="mr-2 h-4 w-4" />
                 Open Kanban Board
