@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+.pnpm-debug.log*
+
+# Package files (should only be in subdirectories)
+package.json
+pnpm-lock.yaml
+
+# OS files
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
