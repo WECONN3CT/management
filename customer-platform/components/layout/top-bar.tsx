@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Input } from '@/components/ui/input';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { MOCK_DATA } from '@/lib/mock-data';
 import { useState } from 'react';
@@ -42,8 +43,23 @@ export function TopBar() {
       {/* Mobile Sidebar */}
       <MobileSidebar open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
 
-      {/* Spacer for desktop */}
-      <div className="hidden md:block" />
+      {/* Search Bar - Center */}
+      <div className="hidden md:block flex-1 max-w-md mx-auto">
+        <div className="relative">
+          <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="Search... (Cmd+K)"
+            className="pl-8 cursor-pointer"
+            readOnly
+            onClick={() => {
+              // Trigger Cmd+K
+              document.dispatchEvent(
+                new KeyboardEvent('keydown', { key: 'k', metaKey: true })
+              );
+            }}
+          />
+        </div>
+      </div>
 
       {/* Right Side */}
       <div className="flex items-center gap-4">
