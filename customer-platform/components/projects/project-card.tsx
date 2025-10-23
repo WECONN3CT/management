@@ -36,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Card
-      className="hover:shadow-lg transition-shadow cursor-pointer group"
+      className="hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1 animate-fade-in"
       onClick={() => router.push(`/projects/${project.id}`)}
     >
       <CardHeader>

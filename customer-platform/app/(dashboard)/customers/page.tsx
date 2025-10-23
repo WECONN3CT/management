@@ -116,12 +116,17 @@ export default function CustomersPage() {
         </div>
       ) : viewMode === 'card' ? (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredCustomers.map((customer) => (
-            <CustomerCard
+          {filteredCustomers.map((customer, index) => (
+            <div
               key={customer.id}
-              customer={customer}
-              onClick={() => setSelectedCustomer(customer)}
-            />
+              className="animate-slide-in-bottom"
+              style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'backwards' }}
+            >
+              <CustomerCard
+                customer={customer}
+                onClick={() => setSelectedCustomer(customer)}
+              />
+            </div>
           ))}
         </div>
       ) : (

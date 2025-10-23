@@ -34,29 +34,49 @@ export default function DashboardPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <StatsCard
-          title="Active Customers"
-          value={activeCustomers}
-          icon="users"
-          trend="+2 this month"
-        />
-        <StatsCard
-          title="Active Projects"
-          value={activeProjects}
-          icon="folder"
-        />
-        <StatsCard
-          title="Completed This Week"
-          value={completedThisWeek}
-          icon="check"
-          trend="+50% vs last week"
-        />
-        <StatsCard
-          title="Overdue Tasks"
-          value={overdueTasks}
-          icon="alert"
-          variant={overdueTasks > 0 ? 'warning' : 'default'}
-        />
+        <div
+          className="animate-slide-in-bottom"
+          style={{ animationDelay: '0ms', animationFillMode: 'backwards' }}
+        >
+          <StatsCard
+            title="Active Customers"
+            value={activeCustomers}
+            icon="users"
+            trend="+2 this month"
+          />
+        </div>
+        <div
+          className="animate-slide-in-bottom"
+          style={{ animationDelay: '50ms', animationFillMode: 'backwards' }}
+        >
+          <StatsCard
+            title="Active Projects"
+            value={activeProjects}
+            icon="folder"
+          />
+        </div>
+        <div
+          className="animate-slide-in-bottom"
+          style={{ animationDelay: '100ms', animationFillMode: 'backwards' }}
+        >
+          <StatsCard
+            title="Completed This Week"
+            value={completedThisWeek}
+            icon="check"
+            trend="+50% vs last week"
+          />
+        </div>
+        <div
+          className="animate-slide-in-bottom"
+          style={{ animationDelay: '150ms', animationFillMode: 'backwards' }}
+        >
+          <StatsCard
+            title="Overdue Tasks"
+            value={overdueTasks}
+            icon="alert"
+            variant={overdueTasks > 0 ? 'warning' : 'default'}
+          />
+        </div>
       </div>
 
       {/* Charts & Lists */}

@@ -21,7 +21,7 @@ export function StatsCard({ title, value, icon, trend, variant = 'default' }: St
   const Icon = icons[icon];
 
   return (
-    <Card>
+    <Card className="animate-fade-in">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">
           {title}

@@ -41,7 +41,7 @@ export function StoryCard({ story, onClick, isDragging = false }: StoryCardProps
       )}
     >
       <Card
-        className="cursor-pointer hover:shadow-md transition-shadow"
+        className="cursor-pointer hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 animate-fade-in"
         onClick={(e) => {
           if (!isDrag) {
             onClick();

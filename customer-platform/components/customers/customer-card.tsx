@@ -27,7 +27,7 @@ export function CustomerCard({ customer, onClick }: CustomerCardProps) {
   const projectCount = getCustomerProjectCount(customer.id);
 
   return (
-    <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={onClick}>
+    <Card className="hover:shadow-lg transition-all duration-200 cursor-pointer hover:-translate-y-1 animate-fade-in" onClick={onClick}>
       <CardHeader>
         <div className="flex items-start justify-between">
           <h3 className="font-bold text-lg line-clamp-1">{customer.name}</h3>
