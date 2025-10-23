@@ -21,7 +21,9 @@ export function TopBar() {
   const user = MOCK_DATA.currentUser;
 
   const handleLogout = () => {
-    // Fake logout - just redirect to login
+    // Clear localStorage and redirect to login
+    localStorage.removeItem('user');
+    localStorage.removeItem('isAuthenticated');
     window.location.href = '/login';
   };
 
