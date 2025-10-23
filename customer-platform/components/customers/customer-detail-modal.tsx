@@ -79,16 +79,17 @@ export function CustomerDetailModal({ customer, isOpen, onClose }: CustomerDetai
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[95vw] max-w-2xl max-h-[90vh] overflow-y-auto sm:w-full">
         <DialogHeader>
-          <DialogTitle className="flex items-center justify-between">
-            <span>Customer Details</span>
+          <DialogTitle className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span className="text-lg sm:text-xl">Customer Details</span>
             <div className="flex gap-2">
               {!isEditing ? (
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setIsEditing(true)}
+                  className="min-h-touch w-full sm:w-auto"
                 >
                   <Edit className="mr-2 h-4 w-4" />
                   Edit
@@ -99,11 +100,12 @@ export function CustomerDetailModal({ customer, isOpen, onClose }: CustomerDetai
                     variant="outline"
                     size="sm"
                     onClick={handleCancel}
+                    className="min-h-touch flex-1 sm:flex-none"
                   >
                     <X className="mr-2 h-4 w-4" />
                     Cancel
                   </Button>
-                  <Button size="sm" onClick={handleSave}>
+                  <Button size="sm" onClick={handleSave} className="min-h-touch flex-1 sm:flex-none">
                     <Save className="mr-2 h-4 w-4" />
                     Save
                   </Button>
@@ -237,7 +239,7 @@ export function CustomerDetailModal({ customer, isOpen, onClose }: CustomerDetai
 
           {/* Projects Section */}
           <div className="space-y-4 border-t pt-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <h3 className="text-lg font-semibold">
                 Projects ({projects.length})
               </h3>
@@ -250,6 +252,7 @@ export function CustomerDetailModal({ customer, isOpen, onClose }: CustomerDetai
                     description: 'New project creation in Phase 2',
                   });
                 }}
+                className="min-h-touch w-full sm:w-auto"
               >
                 <Plus className="mr-2 h-4 w-4" />
                 New Project
@@ -307,7 +310,7 @@ export function CustomerDetailModal({ customer, isOpen, onClose }: CustomerDetai
                         <Button
                           variant="outline"
                           size="sm"
-                          className="w-full"
+                          className="w-full min-h-touch"
                           onClick={() => {
                             handleClose();
                             router.push(`/projects/${project.id}`);

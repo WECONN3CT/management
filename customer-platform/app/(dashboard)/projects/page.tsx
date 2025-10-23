@@ -43,29 +43,32 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      {/* Header - Responsive stack on mobile */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Projekte</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold">Projekte</h1>
+          <p className="text-sm sm:text-base text-muted-foreground mt-0.5">
             {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
           </p>
         </div>
-        <Button onClick={() => alert('New project wizard in Story 5.3!')}>
+        <Button
+          onClick={() => alert('New project wizard in Story 5.3!')}
+          className="w-full sm:w-auto min-h-touch"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Neues Projekt
         </Button>
       </div>
 
       {/* Filters & Search */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {/* Search */}
         <Input
           placeholder="Search projects..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="max-w-sm"
+          className="w-full sm:max-w-sm min-h-touch"
         />
 
         {/* Status Filters */}
@@ -78,6 +81,7 @@ export default function ProjectsPage() {
                 variant={statusFilter === status ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setStatusFilter(status)}
+                className="min-h-touch"
               >
                 {status === 'all' ? 'All' : status === 'in_development' ? 'In Development' : status.charAt(0).toUpperCase() + status.slice(1)}
                 <span className="ml-1 text-xs opacity-60">
@@ -98,6 +102,7 @@ export default function ProjectsPage() {
                 variant={typeFilter === type ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setTypeFilter(type)}
+                className="min-h-touch"
               >
                 {type === 'all' ? 'All' : type.charAt(0).toUpperCase() + type.slice(1)}
                 <span className="ml-1 text-xs opacity-60">

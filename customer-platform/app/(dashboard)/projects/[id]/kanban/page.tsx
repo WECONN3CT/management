@@ -87,31 +87,30 @@ export default function KanbanPage({ params }: { params: { id: string } }) {
   const assignees = ['all', ...Array.from(new Set(allStories.map(s => s.assignee)))];
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => router.push(`/projects/${params.id}`)}
-          >
-            <ArrowLeft className="h-5 w-5" />
-          </Button>
-          <div>
-            <h1 className="text-3xl font-bold">{project.title}</h1>
-            <p className="text-sm text-muted-foreground">Kanban Board</p>
-          </div>
+    <div className="space-y-4 sm:space-y-6">
+      {/* Header - Responsive */}
+      <div className="flex items-center gap-2 sm:gap-4">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => router.push(`/projects/${params.id}`)}
+          className="min-h-touch min-w-touch flex-shrink-0"
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </Button>
+        <div className="min-w-0">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold truncate">{project.title}</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground">Kanban Board</p>
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4">
+      {/* Filters - Responsive stack */}
+      <div className="flex flex-col gap-3 sm:gap-4">
         <Input
           placeholder="Search stories..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="max-w-sm"
+          className="w-full sm:max-w-sm min-h-touch"
         />
         <KanbanFilters
           assignees={assignees}
@@ -122,30 +121,32 @@ export default function KanbanPage({ params }: { params: { id: string } }) {
         />
       </div>
 
-      {/* Kanban Board */}
-      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <div className="flex gap-4 overflow-x-auto pb-4">
-          {COLUMNS.map(column => (
-            <KanbanColumn
-              key={column.id}
-              id={column.id}
-              label={column.label}
-              color={column.color}
-              stories={getStoriesForColumn(column.id)}
-              onStoryClick={(story) => router.push(`/stories/${story.id}`)}
-            />
-          ))}
-        </div>
+      {/* Kanban Board - Horizontal scroll on mobile, touch-friendly */}
+      <div className="relative -mx-4 sm:mx-0">
+        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+          <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 px-4 sm:px-0 snap-x snap-mandatory">
+            {COLUMNS.map(column => (
+              <KanbanColumn
+                key={column.id}
+                id={column.id}
+                label={column.label}
+                color={column.color}
+                stories={getStoriesForColumn(column.id)}
+                onStoryClick={(story) => router.push(`/stories/${story.id}`)}
+              />
+            ))}
+          </div>
 
-        {/* Drag Overlay */}
-        <DragOverlay>
-          {activeStory ? (
-            <div className="rotate-3">
-              <StoryCard story={activeStory} onClick={() => {}} isDragging />
-            </div>
-          ) : null}
-        </DragOverlay>
-      </DndContext>
+          {/* Drag Overlay */}
+          <DragOverlay>
+            {activeStory ? (
+              <div className="rotate-3">
+                <StoryCard story={activeStory} onClick={() => {}} isDragging />
+              </div>
+            ) : null}
+          </DragOverlay>
+        </DndContext>
+      </div>
     </div>
   );
 }

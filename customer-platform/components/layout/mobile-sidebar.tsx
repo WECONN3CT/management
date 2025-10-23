@@ -72,7 +72,7 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
                 href={item.href}
                 onClick={onClose}
                 className={cn(
-                  'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                  'flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors min-h-touch',
                   isActive
                     ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:bg-muted hover:text-foreground'

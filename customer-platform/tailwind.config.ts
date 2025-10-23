@@ -66,6 +66,13 @@ const config = {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
+      // Add touch-friendly minimum sizes
+      minHeight: {
+        touch: '44px',
+      },
+      minWidth: {
+        touch: '44px',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

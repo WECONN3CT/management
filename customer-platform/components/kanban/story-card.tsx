@@ -41,14 +41,14 @@ export function StoryCard({ story, onClick, isDragging = false }: StoryCardProps
       )}
     >
       <Card
-        className="cursor-pointer hover:shadow-md transition-shadow"
+        className="cursor-pointer hover:shadow-md transition-shadow touch-manipulation"
         onClick={(e) => {
           if (!isDrag) {
             onClick();
           }
         }}
       >
-        <CardContent className="p-3 space-y-2">
+        <CardContent className="p-3 sm:p-4 space-y-2 min-h-touch">
           {/* Story ID & Priority */}
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono text-muted-foreground">
@@ -66,10 +66,10 @@ export function StoryCard({ story, onClick, isDragging = false }: StoryCardProps
 
           {/* Assignee */}
           <div className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium">
+            <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-full bg-primary/10 flex items-center justify-center text-xs font-medium flex-shrink-0">
               {story.assignee.split(' ').map(n => n[0]).join('')}
             </div>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground truncate">
               {story.assignee}
             </span>
           </div>
@@ -77,10 +77,10 @@ export function StoryCard({ story, onClick, isDragging = false }: StoryCardProps
           {/* Deadline */}
           {story.deadline && (
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Calendar className="h-3 w-3" />
-              <span>{formatDate(story.deadline)}</span>
+              <Calendar className="h-3 w-3 flex-shrink-0" />
+              <span className="truncate">{formatDate(story.deadline)}</span>
               {new Date(story.deadline) < new Date() && (
-                <AlertCircle className="h-3 w-3 text-red-500 ml-1" />
+                <AlertCircle className="h-3 w-3 text-red-500 ml-1 flex-shrink-0" />
               )}
             </div>
           )}

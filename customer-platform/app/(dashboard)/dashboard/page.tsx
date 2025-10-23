@@ -24,16 +24,16 @@ export default function DashboardPage() {
   const overdueTasks = getOverdueStories().length;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
+        <p className="text-sm sm:text-base text-muted-foreground mt-1">
           Welcome back, {MOCK_DATA.currentUser.name}
         </p>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {/* Stats Cards - Stack on mobile, 2 cols on sm, 4 cols on lg */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <StatsCard
           title="Active Customers"
           value={activeCustomers}
@@ -59,14 +59,14 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Charts & Lists */}
-      <div className="grid gap-6 md:grid-cols-2">
+      {/* Charts & Lists - Stack on mobile, 2 cols on md */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <ProjectChart projects={MOCK_DATA.projects} />
         <DeadlinesList deadlines={getUpcomingDeadlines()} />
       </div>
 
-      {/* Team & Activity */}
-      <div className="grid gap-6 md:grid-cols-2">
+      {/* Team & Activity - Stack on mobile, 2 cols on md */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <TeamWorkload
           projects={MOCK_DATA.projects}
           stories={MOCK_DATA.stories}

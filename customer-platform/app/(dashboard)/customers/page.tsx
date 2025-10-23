@@ -43,40 +43,44 @@ export default function CustomersPage() {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      {/* Header - Responsive stack on mobile */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Kunden</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold">Kunden</h1>
+          <p className="text-sm sm:text-base text-muted-foreground mt-0.5">
             {filteredCustomers.length} customer{filteredCustomers.length !== 1 ? 's' : ''}
           </p>
         </div>
-        <Button onClick={() => alert('New customer form coming in Phase 2!')}>
+        <Button
+          onClick={() => alert('New customer form coming in Phase 2!')}
+          className="w-full sm:w-auto min-h-touch"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Neuer Kunde
         </Button>
       </div>
 
       {/* Filters & Search */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 sm:gap-4">
         {/* Search */}
         <Input
           placeholder="Search customers..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="max-w-sm"
+          className="w-full sm:max-w-sm min-h-touch"
         />
 
-        <div className="flex items-center gap-2">
-          {/* Status Filters */}
-          <div className="flex gap-1">
+        {/* Status Filters - Scrollable on mobile */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
             {(['all', 'active', 'on_hold', 'completed'] as const).map((status) => (
               <Button
                 key={status}
                 variant={statusFilter === status ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setStatusFilter(status)}
+                className="min-h-touch whitespace-nowrap"
               >
                 {status === 'all' ? 'All' : status === 'on_hold' ? 'On Hold' : status.charAt(0).toUpperCase() + status.slice(1)}
                 <span className="ml-1 text-xs opacity-60">
@@ -92,6 +96,7 @@ export default function CustomersPage() {
               variant={viewMode === 'card' ? 'default' : 'outline'}
               size="icon"
               onClick={() => handleViewChange('card')}
+              className="min-h-touch min-w-touch"
             >
               <LayoutGrid className="h-4 w-4" />
             </Button>
@@ -99,6 +104,7 @@ export default function CustomersPage() {
               variant={viewMode === 'table' ? 'default' : 'outline'}
               size="icon"
               onClick={() => handleViewChange('table')}
+              className="min-h-touch min-w-touch"
             >
               <List className="h-4 w-4" />
             </Button>

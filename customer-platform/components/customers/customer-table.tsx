@@ -78,26 +78,26 @@ export function CustomerTable({ customers, onRowClick }: CustomerTableProps) {
   );
 
   return (
-    <div className="rounded-md border">
-      <Table>
+    <div className="rounded-md border overflow-x-auto -mx-4 sm:mx-0">
+      <Table className="min-w-full">
         <TableHeader>
           <TableRow>
-            <TableHead>
+            <TableHead className="min-w-[150px]">
               <SortButton field="name">Name</SortButton>
             </TableHead>
-            <TableHead>
+            <TableHead className="min-w-[200px] hidden sm:table-cell">
               <SortButton field="email">Email</SortButton>
             </TableHead>
-            <TableHead>
+            <TableHead className="min-w-[100px]">
               <SortButton field="status">Status</SortButton>
             </TableHead>
-            <TableHead>
+            <TableHead className="min-w-[100px] hidden md:table-cell">
               <SortButton field="projects">Projects</SortButton>
             </TableHead>
-            <TableHead>
+            <TableHead className="min-w-[120px] hidden lg:table-cell">
               <SortButton field="lastContact">Last Contact</SortButton>
             </TableHead>
-            <TableHead>Actions</TableHead>
+            <TableHead className="min-w-[100px]">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -108,7 +108,7 @@ export function CustomerTable({ customers, onRowClick }: CustomerTableProps) {
               onClick={() => onRowClick(customer)}
             >
               <TableCell className="font-medium">{customer.name}</TableCell>
-              <TableCell className="text-muted-foreground">
+              <TableCell className="text-muted-foreground hidden sm:table-cell">
                 {customer.email || '-'}
               </TableCell>
               <TableCell>
@@ -116,8 +116,8 @@ export function CustomerTable({ customers, onRowClick }: CustomerTableProps) {
                   {statusLabels[customer.status]}
                 </Badge>
               </TableCell>
-              <TableCell>{getCustomerProjectCount(customer.id)}</TableCell>
-              <TableCell className="text-muted-foreground">
+              <TableCell className="hidden md:table-cell">{getCustomerProjectCount(customer.id)}</TableCell>
+              <TableCell className="text-muted-foreground hidden lg:table-cell">
                 {customer.lastContact ? formatDate(customer.lastContact) : '-'}
               </TableCell>
               <TableCell>
@@ -128,6 +128,7 @@ export function CustomerTable({ customers, onRowClick }: CustomerTableProps) {
                     e.stopPropagation();
                     onRowClick(customer);
                   }}
+                  className="min-h-touch"
                 >
                   View
                 </Button>
