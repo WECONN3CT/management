@@ -23,10 +23,10 @@ const statusVariants = {
 } as const;
 
 const typeColors = {
-  website: 'bg-blue-500',
-  app: 'bg-purple-500',
-  software: 'bg-green-500',
-  marketing: 'bg-orange-500',
+  website: 'bg-blue-500 dark:bg-blue-600',
+  app: 'bg-purple-500 dark:bg-purple-600',
+  software: 'bg-green-500 dark:bg-green-600',
+  marketing: 'bg-orange-500 dark:bg-orange-600',
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {

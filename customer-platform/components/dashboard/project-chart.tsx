@@ -18,10 +18,10 @@ export function ProjectChart({ projects }: ProjectChartProps) {
   const total = Object.values(statusCounts).reduce((a, b) => a + b, 0);
 
   const statusColors = {
-    planning: 'bg-blue-500',
-    in_development: 'bg-purple-500',
-    review: 'bg-orange-500',
-    completed: 'bg-green-500',
+    planning: 'bg-blue-500 dark:bg-blue-600',
+    in_development: 'bg-purple-500 dark:bg-purple-600',
+    review: 'bg-orange-500 dark:bg-orange-600',
+    completed: 'bg-green-500 dark:bg-green-600',
   };
 
   const statusLabels = {

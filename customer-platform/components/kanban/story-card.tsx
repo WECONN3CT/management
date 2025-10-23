@@ -80,7 +80,7 @@ export function StoryCard({ story, onClick, isDragging = false }: StoryCardProps
               <Calendar className="h-3 w-3" />
               <span>{formatDate(story.deadline)}</span>
               {new Date(story.deadline) < new Date() && (
-                <AlertCircle className="h-3 w-3 text-red-500 ml-1" />
+                <AlertCircle className="h-3 w-3 text-red-500 dark:text-red-400 ml-1" />
               )}
             </div>
           )}

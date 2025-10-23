@@ -28,13 +28,13 @@ export function StatsCard({ title, value, icon, trend, variant = 'default' }: St
         </CardTitle>
         <Icon className={cn(
           'h-4 w-4',
-          variant === 'warning' ? 'text-orange-500' : 'text-muted-foreground'
+          variant === 'warning' ? 'text-orange-500 dark:text-orange-400' : 'text-muted-foreground'
         )} />
       </CardHeader>
       <CardContent>
         <div className={cn(
           'text-3xl font-bold',
-          variant === 'warning' && value > 0 && 'text-orange-500'
+          variant === 'warning' && value > 0 && 'text-orange-500 dark:text-orange-400'
         )}>
           {value}
         </div>

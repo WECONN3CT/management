@@ -25,16 +25,16 @@ const config = {
           foreground: "hsl(var(--color-secondary-foreground))",
         },
         success: {
-          DEFAULT: "#10B981",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--color-success))",
+          foreground: "hsl(var(--color-success-foreground))",
         },
         warning: {
-          DEFAULT: "#F59E0B",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--color-warning))",
+          foreground: "hsl(var(--color-warning-foreground))",
         },
-        danger: {
-          DEFAULT: "#EF4444",
-          foreground: "#FFFFFF",
+        info: {
+          DEFAULT: "hsl(var(--color-info))",
+          foreground: "hsl(var(--color-info-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--color-muted))",
