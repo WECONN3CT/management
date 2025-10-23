@@ -3,7 +3,7 @@ import type {
   Customer,
   Project,
   Story,
-  FileAttachment,
+  File,
   Comment,
   CalendarEvent,
 } from './types';
@@ -11,10 +11,12 @@ import type {
 // Current User
 export const CURRENT_USER: User = {
   id: '1',
-  name: 'Max Mueller',
   email: 'max@company.de',
+  name: 'Max Mueller',
   role: 'ceo',
   avatar: '/avatars/ceo.png',
+  createdAt: '2024-01-01',
+  updatedAt: '2025-10-23',
 };
 
 // Team Members
@@ -22,24 +24,30 @@ export const TEAM_MEMBERS: User[] = [
   CURRENT_USER,
   {
     id: '2',
-    name: 'Sarah Schmidt',
     email: 'sarah@company.de',
+    name: 'Sarah Schmidt',
     role: 'customer_manager',
     avatar: '/avatars/sarah.png',
+    createdAt: '2024-01-01',
+    updatedAt: '2025-10-23',
   },
   {
     id: '3',
-    name: 'Tom Weber',
     email: 'tom@company.de',
+    name: 'Tom Weber',
     role: 'developer',
     avatar: '/avatars/tom.png',
+    createdAt: '2024-01-01',
+    updatedAt: '2025-10-23',
   },
   {
     id: '4',
-    name: 'Lisa Fischer',
     email: 'lisa@company.de',
+    name: 'Lisa Fischer',
     role: 'marketing',
     avatar: '/avatars/lisa.png',
+    createdAt: '2024-01-01',
+    updatedAt: '2025-10-23',
   },
 ];
 
@@ -52,7 +60,9 @@ export const MOCK_CUSTOMERS: Customer[] = [
     phone: '+49 123 456789',
     status: 'active',
     notes: 'Wichtiger Kunde, regelmäßige Projekte',
+    createdBy: '2',
     createdAt: '2024-03-15',
+    updatedAt: '2025-10-15',
     lastContact: '2025-10-15',
   },
   {
@@ -64,6 +74,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     notes: 'Spezialisiert auf Automotive-Lösungen',
     createdAt: '2024-05-20',
     lastContact: '2025-10-20',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '3',
@@ -74,6 +86,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     notes: 'Projekt pausiert bis Q1 2026',
     createdAt: '2024-01-10',
     lastContact: '2025-09-30',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '4',
@@ -84,6 +98,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     notes: 'Startup, agile Zusammenarbeit',
     createdAt: '2024-07-01',
     lastContact: '2025-10-18',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '5',
@@ -92,6 +108,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     status: 'active',
     createdAt: '2024-08-15',
     lastContact: '2025-10-22',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '6',
@@ -101,6 +119,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     status: 'active',
     createdAt: '2024-06-10',
     lastContact: '2025-10-19',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '7',
@@ -110,6 +130,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     notes: 'Projekt erfolgreich abgeschlossen',
     createdAt: '2023-11-01',
     lastContact: '2025-08-15',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '8',
@@ -120,6 +142,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     notes: 'E-Commerce Plattform Entwicklung',
     createdAt: '2024-09-01',
     lastContact: '2025-10-21',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '9',
@@ -128,6 +152,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     status: 'active',
     createdAt: '2024-04-20',
     lastContact: '2025-10-10',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
   {
     id: '10',
@@ -137,6 +163,8 @@ export const MOCK_CUSTOMERS: Customer[] = [
     status: 'active',
     createdAt: '2024-02-28',
     lastContact: '2025-10-17',
+    createdBy: '2',
+    updatedAt: '2025-10-23',
   },
 ];
 
@@ -151,7 +179,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'in_development',
     progress: 65,
     deadline: '2025-11-15',
-    assignee: 'Tom Weber',
+    createdBy: '3',
     createdAt: '2025-09-01',
     updatedAt: '2025-10-22',
   },
@@ -164,7 +192,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'planning',
     progress: 15,
     deadline: '2025-12-01',
-    assignee: 'Tom Weber',
+    createdBy: '3',
     createdAt: '2025-10-01',
     updatedAt: '2025-10-20',
   },
@@ -177,7 +205,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'in_development',
     progress: 45,
     deadline: '2025-11-30',
-    assignee: 'Tom Weber',
+    createdBy: '3',
     createdAt: '2025-08-15',
     updatedAt: '2025-10-21',
   },
@@ -189,7 +217,7 @@ export const MOCK_PROJECTS: Project[] = [
     type: 'marketing',
     status: 'on_hold',
     progress: 30,
-    assignee: 'Lisa Fischer',
+    createdBy: '4',
     createdAt: '2025-09-10',
     updatedAt: '2025-09-30',
   },
@@ -202,7 +230,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'review',
     progress: 90,
     deadline: '2025-10-31',
-    assignee: 'Tom Weber',
+    createdBy: '3',
     createdAt: '2025-09-20',
     updatedAt: '2025-10-22',
   },
@@ -215,7 +243,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'planning',
     progress: 10,
     deadline: '2026-01-15',
-    assignee: 'Tom Weber',
+    createdBy: '3',
     createdAt: '2025-10-10',
     updatedAt: '2025-10-20',
   },
@@ -228,7 +256,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'in_development',
     progress: 55,
     deadline: '2025-11-10',
-    assignee: 'Lisa Fischer',
+    createdBy: '4',
     createdAt: '2025-09-05',
     updatedAt: '2025-10-21',
   },
@@ -240,7 +268,7 @@ export const MOCK_PROJECTS: Project[] = [
     type: 'marketing',
     status: 'completed',
     progress: 100,
-    assignee: 'Lisa Fischer',
+    createdBy: '4',
     createdAt: '2025-06-01',
     updatedAt: '2025-08-15',
   },
@@ -253,7 +281,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'in_development',
     progress: 70,
     deadline: '2025-11-20',
-    assignee: 'Tom Weber',
+    createdBy: '3',
     createdAt: '2025-09-15',
     updatedAt: '2025-10-22',
   },
@@ -266,7 +294,7 @@ export const MOCK_PROJECTS: Project[] = [
     status: 'planning',
     progress: 20,
     deadline: '2025-12-15',
-    assignee: 'Tom Weber',
+    createdBy: '3',
     createdAt: '2025-10-05',
     updatedAt: '2025-10-18',
   },
@@ -278,11 +306,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '1.1',
     projectId: '1',
+    storyNumber: '1.1',
     title: 'Landing Page Design & Implementation',
     description: 'Moderne Landing Page mit Hero Section, Features und CTA',
     status: 'done',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-10-25',
     acceptanceCriteria: [
       'Hero section with compelling headline and CTA',
@@ -298,11 +327,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '1.2',
     projectId: '1',
+    storyNumber: '1.2',
     title: 'Contact Form Integration',
     description: 'Kontaktformular mit Validierung und E-Mail-Versand',
     status: 'in_development',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-10-28',
     acceptanceCriteria: [
       'Name, Email, Message fields',
@@ -317,11 +347,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '1.3',
     projectId: '1',
+    storyNumber: '1.3',
     title: 'Blog Section Setup',
     description: 'Blog mit CMS Integration',
     status: 'review',
     priority: 'medium',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-11-01',
     acceptanceCriteria: [
       'Blog overview page',
@@ -337,11 +368,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '1.4',
     projectId: '1',
+    storyNumber: '1.4',
     title: 'Navigation & Footer',
     description: 'Responsive Navigation und Footer',
     status: 'done',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     acceptanceCriteria: [
       'Desktop navigation',
       'Mobile hamburger menu',
@@ -354,11 +386,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '1.5',
     projectId: '1',
+    storyNumber: '1.5',
     title: 'SEO Optimization',
     description: 'Suchmaschinen-Optimierung',
     status: 'ready',
     priority: 'medium',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-11-05',
     acceptanceCriteria: [
       'Meta tags for all pages',
@@ -373,11 +406,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '1.6',
     projectId: '1',
+    storyNumber: '1.6',
     title: 'Performance Optimization',
     description: 'Ladezeit und Performance optimieren',
     status: 'backlog',
     priority: 'medium',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     acceptanceCriteria: [
       'Lighthouse score > 90',
       'Image optimization',
@@ -392,11 +426,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '2.1',
     projectId: '2',
+    storyNumber: '2.1',
     title: 'App Architecture Planning',
     description: 'Tech-Stack und Architektur definieren',
     status: 'done',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     acceptanceCriteria: [
       'Tech stack decided (React Native)',
       'Architecture diagram created',
@@ -409,11 +444,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '2.2',
     projectId: '2',
+    storyNumber: '2.2',
     title: 'User Authentication',
     description: 'Login und Registration',
     status: 'ready',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-11-05',
     acceptanceCriteria: [
       'Login screen',
@@ -428,11 +464,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '2.3',
     projectId: '2',
+    storyNumber: '2.3',
     title: 'Home Screen Design',
     description: 'Main Dashboard der App',
     status: 'ready',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     acceptanceCriteria: [
       'Dashboard layout',
       'Quick actions',
@@ -447,11 +484,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '3.1',
     projectId: '3',
+    storyNumber: '3.1',
     title: 'Customer Database Schema',
     description: 'Datenbank-Schema für Kunden',
     status: 'done',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     acceptanceCriteria: [
       'Tables defined',
       'Relations set up',
@@ -464,11 +502,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '3.2',
     projectId: '3',
+    storyNumber: '3.2',
     title: 'Customer CRUD Operations',
     description: 'Create, Read, Update, Delete für Kunden',
     status: 'in_development',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-10-30',
     acceptanceCriteria: [
       'Create customer',
@@ -483,11 +522,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '3.3',
     projectId: '3',
+    storyNumber: '3.3',
     title: 'Sales Pipeline View',
     description: 'Kanban-Style Sales Pipeline',
     status: 'ready',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-11-10',
     acceptanceCriteria: [
       'Kanban board',
@@ -503,11 +543,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '5.1',
     projectId: '5',
+    storyNumber: '5.1',
     title: 'Hero Section with Animation',
     description: 'Animated Hero Section für Startup',
     status: 'done',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     acceptanceCriteria: [
       'Eye-catching animation',
       'Clear value proposition',
@@ -520,11 +561,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '5.2',
     projectId: '5',
+    storyNumber: '5.2',
     title: 'Features Section',
     description: 'Produkt-Features darstellen',
     status: 'review',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-10-29',
     acceptanceCriteria: [
       'Feature cards with icons',
@@ -539,11 +581,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '5.3',
     projectId: '5',
+    storyNumber: '5.3',
     title: 'Contact & Demo Request',
     description: 'Kontakt und Demo-Anfrage Formular',
     status: 'review',
     priority: 'medium',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-10-30',
     acceptanceCriteria: [
       'Demo request form',
@@ -559,11 +602,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '9.1',
     projectId: '9',
+    storyNumber: '9.1',
     title: 'Product Catalog',
     description: 'Produktkatalog mit Filter',
     status: 'in_development',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-11-01',
     acceptanceCriteria: [
       'Product grid',
@@ -578,11 +622,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '9.2',
     projectId: '9',
+    storyNumber: '9.2',
     title: 'Shopping Cart',
     description: 'Warenkorb-Funktionalität',
     status: 'ready',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-11-05',
     acceptanceCriteria: [
       'Add to cart',
@@ -597,11 +642,12 @@ export const MOCK_STORIES: Story[] = [
   {
     id: '9.3',
     projectId: '9',
+    storyNumber: '9.3',
     title: 'Checkout Process',
     description: 'Checkout und Bezahlung',
     status: 'ready',
     priority: 'high',
-    assignee: 'Tom Weber',
+    assigneeId: '3',
     deadline: '2025-11-15',
     acceptanceCriteria: [
       'Multi-step checkout',
@@ -616,55 +662,60 @@ export const MOCK_STORIES: Story[] = [
 ];
 
 // Mock Files
-export const MOCK_FILES: FileAttachment[] = [
+export const MOCK_FILES: File[] = [
   {
     id: '1',
     projectId: '1',
     storyId: '1.1',
     filename: 'landing-design-v2.fig',
+    filePath: '/uploads/landing-design-v2.fig',
     fileSize: 2400000,
     mimeType: 'application/figma',
     uploadedBy: 'Sarah Schmidt',
-    uploadedAt: '2025-10-20',
+    createdAt: '2025-10-20',
   },
   {
     id: '2',
     projectId: '1',
     storyId: '1.2',
     filename: 'form-validation-rules.md',
+    filePath: '/uploads/form-validation-rules.md',
     fileSize: 15000,
     mimeType: 'text/markdown',
     uploadedBy: 'Tom Weber',
-    uploadedAt: '2025-10-21',
+    createdAt: '2025-10-21',
   },
   {
     id: '3',
     projectId: '1',
     filename: 'brand-guidelines.pdf',
+    filePath: '/uploads/brand-guidelines.pdf',
     fileSize: 1800000,
     mimeType: 'application/pdf',
     uploadedBy: 'Sarah Schmidt',
-    uploadedAt: '2025-09-15',
+    createdAt: '2025-09-15',
   },
   {
     id: '4',
     projectId: '2',
     storyId: '2.2',
     filename: 'app-wireframes.sketch',
+    filePath: '/uploads/app-wireframes.sketch',
     fileSize: 3200000,
     mimeType: 'application/sketch',
     uploadedBy: 'Lisa Fischer',
-    uploadedAt: '2025-10-10',
+    createdAt: '2025-10-10',
   },
   {
     id: '5',
     projectId: '5',
     storyId: '5.1',
     filename: 'hero-animation.mp4',
+    filePath: '/uploads/hero-animation.mp4',
     fileSize: 8500000,
     mimeType: 'video/mp4',
     uploadedBy: 'Tom Weber',
-    uploadedAt: '2025-10-18',
+    createdAt: '2025-10-18',
   },
 ];
 
@@ -675,45 +726,45 @@ export const MOCK_COMMENTS: Comment[] = [
     storyId: '1.1',
     userId: '2',
     userName: 'Sarah Schmidt',
-    userAvatar: '/avatars/sarah.png',
     content: 'Kunde ist sehr zufrieden mit dem Design! 🎉',
     createdAt: '2025-10-23T14:30:00Z',
+    updatedAt: '2025-10-23T14:30:00Z',
   },
   {
     id: '2',
     storyId: '1.1',
     userId: '3',
     userName: 'Tom Weber',
-    userAvatar: '/avatars/tom.png',
     content: 'Super! Habe noch die Performance optimiert.',
     createdAt: '2025-10-23T15:00:00Z',
+    updatedAt: '2025-10-23T15:00:00Z',
   },
   {
     id: '3',
     storyId: '1.2',
     userId: '2',
     userName: 'Sarah Schmidt',
-    userAvatar: '/avatars/sarah.png',
     content: 'Kunde möchte auch ein Telefon-Feld im Formular',
     createdAt: '2025-10-22T10:15:00Z',
+    updatedAt: '2025-10-22T10:15:00Z',
   },
   {
     id: '4',
     storyId: '1.2',
     userId: '3',
     userName: 'Tom Weber',
-    userAvatar: '/avatars/tom.png',
     content: 'Verstanden, füge ich hinzu!',
     createdAt: '2025-10-22T11:00:00Z',
+    updatedAt: '2025-10-22T11:00:00Z',
   },
   {
     id: '5',
     storyId: '5.2',
     userId: '1',
     userName: 'Max Mueller',
-    userAvatar: '/avatars/ceo.png',
     content: 'Können wir die Animationen etwas subtiler machen?',
     createdAt: '2025-10-21T16:20:00Z',
+    updatedAt: '2025-10-21T16:20:00Z',
   },
 ];
 
@@ -793,11 +844,11 @@ export function getCommentsByStoryId(storyId: string): Comment[] {
   return MOCK_COMMENTS.filter((c) => c.storyId === storyId);
 }
 
-export function getFilesByProjectId(projectId: string): FileAttachment[] {
+export function getFilesByProjectId(projectId: string): File[] {
   return MOCK_FILES.filter((f) => f.projectId === projectId);
 }
 
-export function getFilesByStoryId(storyId: string): FileAttachment[] {
+export function getFilesByStoryId(storyId: string): File[] {
   return MOCK_FILES.filter((f) => f.storyId === storyId);
 }
 

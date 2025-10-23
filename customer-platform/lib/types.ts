@@ -7,10 +7,12 @@ export type Priority = 'low' | 'medium' | 'high';
 
 export interface User {
   id: string;
-  name: string;
   email: string;
+  name: string;
   role: UserRole;
-  avatar: string;
+  avatar?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Customer {
@@ -20,8 +22,11 @@ export interface Customer {
   phone?: string;
   status: CustomerStatus;
   notes?: string;
-  createdAt: string;
+  projectCount?: number;
   lastContact?: string;
+  createdBy: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Project {
@@ -31,21 +36,23 @@ export interface Project {
   description?: string;
   type: ProjectType;
   status: ProjectStatus;
-  progress: number; // 0-100
+  progress: number;
   deadline?: string;
-  assignee: string;
+  prdContent?: any;
+  createdBy: string;
   createdAt: string;
   updatedAt: string;
 }
 
 export interface Story {
-  id: string; // e.g., "1.1", "1.2"
+  id: string;
   projectId: string;
+  storyNumber: string;
   title: string;
   description: string;
   status: StoryStatus;
   priority: Priority;
-  assignee: string;
+  assigneeId?: string;
   deadline?: string;
   acceptanceCriteria: string[];
   devNotes?: string;
@@ -53,15 +60,16 @@ export interface Story {
   updatedAt: string;
 }
 
-export interface FileAttachment {
+export interface File {
   id: string;
-  projectId?: string;
+  projectId: string;
   storyId?: string;
   filename: string;
-  fileSize: number; // in bytes
+  filePath: string;
+  fileSize: number;
   mimeType: string;
   uploadedBy: string;
-  uploadedAt: string;
+  createdAt: string;
 }
 
 export interface Comment {
@@ -69,9 +77,9 @@ export interface Comment {
   storyId: string;
   userId: string;
   userName: string;
-  userAvatar: string;
   content: string;
   createdAt: string;
+  updatedAt: string;
 }
 
 export interface CalendarEvent {

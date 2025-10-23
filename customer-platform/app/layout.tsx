@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+// import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { cn } from '@/lib/utils'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
+// Note: Inter font from Google Fonts is commented out due to network restrictions
+// In production, uncomment the above lines to use Google Fonts
 
 export const metadata: Metadata = {
   title: 'Customer Management Platform',
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn("font-sans antialiased", inter.className)}
+        className={cn("font-sans antialiased")}
         suppressHydrationWarning
       >
         <ThemeProvider
