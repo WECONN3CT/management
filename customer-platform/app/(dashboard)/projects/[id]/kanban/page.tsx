@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/core';
 import { MOCK_DATA, getStoriesByProjectId } from '@/lib/mock-data';
@@ -20,10 +20,11 @@ const COLUMNS: { id: StoryStatus; label: string; color: string }[] = [
   { id: 'done', label: 'Done', color: 'bg-green-500' },
 ];
 
-export default function KanbanPage({ params }: { params: { id: string } }) {
+export default function KanbanPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const router = useRouter();
-  const project = MOCK_DATA.projects.find(p => p.id === params.id);
-  const allStories = getStoriesByProjectId(params.id);
+  const project = MOCK_DATA.projects.find(p => p.id === id);
+  const allStories = getStoriesByProjectId(id);
 
   const [stories, setStories] = useState<Story[]>(allStories);
   const [searchQuery, setSearchQuery] = useState('');
@@ -94,7 +95,7 @@ export default function KanbanPage({ params }: { params: { id: string } }) {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => router.push(`/projects/${params.id}`)}
+            onClick={() => router.push(`/projects/${id}`)}
           >
             <ArrowLeft className="h-5 w-5" />
           </Button>

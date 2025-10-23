@@ -1,5 +1,6 @@
 'use client';
 
+import { use } from 'react';
 import { useRouter } from 'next/navigation';
 import { MOCK_DATA, getCustomerById, getStoriesByProjectId } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
@@ -9,9 +10,10 @@ import { ArrowLeft, Edit, ExternalLink, Calendar, User, Layers, Plus } from 'luc
 import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
 
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const router = useRouter();
-  const project = MOCK_DATA.projects.find(p => p.id === params.id);
+  const project = MOCK_DATA.projects.find(p => p.id === id);
 
   if (!project) {
     return (
